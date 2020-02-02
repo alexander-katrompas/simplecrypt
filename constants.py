@@ -2,6 +2,7 @@
 Caesar encrption and decryption
 
 Author: Alex Katrompas
+
 """
 
 ALPHAUPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
