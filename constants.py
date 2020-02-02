@@ -1,3 +1,9 @@
+"""
+Caesar encrption and decryption
+
+Author: Alex Katrompas
+"""
+
 ALPHAUPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 ALPHALOWER = "abcdefghijklmnopqrstuvwxyz"
 NONALPHA = " !\"#$%&'()*+,-./0123456789:;<=>?@"
