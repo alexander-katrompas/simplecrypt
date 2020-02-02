@@ -66,5 +66,5 @@ def probabilisticCrack(message):
     for ch in cs.FREQUENCY:
         diff = ((c - cs.offset(ch)) % 26);
         #print("difference between trial key", ch, cs.ALPHALOWER[c], "is", cs.offset(ch), "-", c, "=", diff)
-        print("  Odds are", mostUsedLetter, "is",ch, "so the key must be",cs.ALPHALOWER[diff], "...")
+        print("  Odds are", mostUsedLetter, "is", ch, "so the key must be", cs.ALPHALOWER[diff], "...")
         print("    Message:", decrypt(message, diff))
