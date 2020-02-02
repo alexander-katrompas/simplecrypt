@@ -61,7 +61,7 @@ def probabilisticCrack(message):
 
     mostUsedLetter = max(results, key=results.get)
     c = cs.offset(mostUsedLetter)
-    print("  Highest Frequency Letter:", mostUsedLetter, "with a value of", c)
+    print("  Highest Frequency Letter:", mostUsedLetter, "with a value of", c, "\n")
 
     for ch in cs.FREQUENCY:
         diff = ((c - cs.offset(ch)) % 26);
