@@ -8,50 +8,59 @@ import caesar
 import constants as cs
 import vigenere
 
-CAESAR = False
+print("=================================")
+print("===========CAESAR CYPER==========")
+print("=================================")
+print()
 
-if CAESAR:
+M = "The entire message for Caesar Cypher."
+K = 'b'
 
-    M = "The entire message for Caesar Cypher."
-    K = 'b'
+print("Key:", K)
+print("Message:", M)
+print("Length:", len(M), "\n")
 
-    print("Key:", K)
-    print("Message:", M)
-    print("Length:", len(M), "\n")
+C = caesar.encrypt(M, cs.offset(K))
+print("Encrypted:", C)
 
-    C = caesar.encrypt(M, cs.offset(K))
-    print("Encrypted:", C)
+m = caesar.decrypt(C, cs.offset(K))
+print("Decrypted:", m, end=" ")
 
-    m = caesar.decrypt(C, cs.offset(K))
-    print("Decrypted:", m, end=" ")
-
-    if M == m:
-        print("[success]\n")
-    else:
-        print("[fail]\n")
-
-    print("Cracking '", C, "' with brute force...\n", sep="")
-    caesar.bruteForceCrack(C)
-
-    print("Cracking '", C, "' with probabilistic cracking...\n", sep="")
-    caesar.probabilisticCrack(C)
-
+if M == m:
+    print("[success]\n")
 else:
-    M = "The entire message for Vigenere Cypher."
-    K = 'vige'
-    
-    print("Key:", K)
-    print("Message:", M)
-    print("Length:", len(M), "\n")
-    
-    C = vigenere.encrypt(M, K)
-    print("Encrypted:", C)
+    print("[fail]\n")
 
-    m = vigenere.decrypt(C, K)
-    print("Decrypted:", m, end=" ")
+print("Cracking '", C, "' with brute force...\n", sep="")
+caesar.bruteForceCrack(C)
 
-    if M == m:
-        print("[success]\n")
-    else:
-        print("[fail]\n")
+print("Cracking '", C, "' with probabilistic cracking...\n", sep="")
+caesar.probabilisticCrack(C)
 
+print("\n")
+print("=================================")
+print("=========VIGENERE CYPER==========")
+print("=================================")
+print()
+
+M = "theentiremessageforthevigenerecypher"
+K = 'key'
+
+print("Key:", K)
+print("Message:", M)
+print("Length:", len(M), "\n")
+
+C = vigenere.encrypt(M, K)
+print("Encrypted:", C)
+
+m = vigenere.decrypt(C, K)
+print("Decrypted:", m, end=" ")
+
+if M == m:
+    print("[success]\n")
+else:
+    print("[fail]\n")
+
+# note this version of cracking does not allow for non alpha characters
+print("Cracking '", C, "' by finding repeated blocks of text...\n", sep="")
+vigenere.crack(C)
