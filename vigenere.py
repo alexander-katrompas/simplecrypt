@@ -60,25 +60,42 @@ def generateKeyString(key, length):
         keyString += key[i % keyLength]
     return keyString
 
-def encrypt(message, key):
+def encrypt(message, key, xor=False):
+    
     encrypted = ""
     keyString = generateKeyString(key, len(message))
 
     i = 0
     for ch in message:
-        encrypted += caesar.encrypt(ch, cs.offset(keyString[i]))
+        if xor:
+            num = format(ord(ch) ^ ord(keyString[i]), "x")
+            if len(num) % 2: num = "0" + num
+            encrypted += num
+        else:
+            encrypted += caesar.encrypt(ch, cs.offset(keyString[i]))
         i += 1
 
     return encrypted
 
-def decrypt(message, key):
+def decrypt(message, key, xor=False):
     decrypted = ""
     keyString = generateKeyString(key, len(message))
     
-    i = 0
-    for ch in message:
-        decrypted += caesar.decrypt(ch, cs.offset(keyString[i]))
-        i += 1
+    if xor:
+        i = j = 0
+        length = len(message)
+        while i < length:
+            ch = message[i:i+2]
+            ch = int(ch, 16)
+            #print(ch)
+            ch = format(ch ^ ord(keyString[j]), "x")
+            ch = chr(int(ch, 16))
+            decrypted += ch
+            i+=2
+            j+=1
+    else:
+        for i, ch in enumerate(message):
+            decrypted += caesar.decrypt(ch, cs.offset(keyString[i]))
 
     return decrypted
 
