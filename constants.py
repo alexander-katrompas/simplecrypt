@@ -6,6 +6,7 @@ Author: Alex Katrompas
 
 ALPHAUPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 ALPHALOWER = "abcdefghijklmnopqrstuvwxyz"
+ALPHA = ALPHAUPPER + ALPHALOWER
 NONALPHA = " !\"#$%&'()*+,-./0123456789:;<=>?@"
 FREQUENCY = "etaoinshrdlcumwfgypbvkjxqz"
 
