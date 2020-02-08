@@ -43,17 +43,17 @@ print("=========VIGENERE CYPER==========")
 print("=================================")
 print()
 
-M = "theentiremessageforthevigenerecypher"
-K = 'key'
+M = "the entire message for the vigenere cypher"
+K = 'vige'
 
 print("Key:", K)
 print("Message:", M)
 print("Length:", len(M), "\n")
 
-C = vigenere.encrypt(M, K)
+C = vigenere.encrypt(M, K, True)
 print("Encrypted:", C)
 
-m = vigenere.decrypt(C, K)
+m = vigenere.decrypt(C, K, True)
 print("Decrypted:", m, end=" ")
 
 if M == m:
@@ -61,6 +61,7 @@ if M == m:
 else:
     print("[fail]\n")
 
+exit()
 # note this version of cracking does not allow for non alpha characters
 print("Cracking '", C, "' by finding repeated blocks of text...\n", sep="")
 vigenere.crack(C)
